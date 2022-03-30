@@ -5,7 +5,7 @@
 
 import os
 from setuptools import setup, find_packages
-from aversio import Version, get_git_version, fix_version
+from aversio import Version, get_git_version, maintain_version
 
 # Utility function to read the README file.
 # Used for the long_description.  It's nice, because now 1) we have a top level
@@ -14,18 +14,7 @@ from aversio import Version, get_git_version, fix_version
 #def read(fname):
 #    return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
-VERSION = str(Version(get_git_version()[1:]))
-
-if os.path.exists("VERSION"):
-    STORED = open("VERSION", "r").read()
-else:
-    STORED = ""
-
-VERSION = fix_version(VERSION, STORED)
-
-with open("VERSION", "w") as file:
-    file.write(VERSION)
-
+VERSION = maintain_version(str(Version(get_git_version()[1:])), "VERSION")
 
 # Also store the version to be seen from the code
 with open("./aversio/version.py", "w") as file:
