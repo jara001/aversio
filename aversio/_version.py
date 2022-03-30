@@ -16,7 +16,7 @@ class Version():
 
         self.MAJOR = version[0]
         self.MINOR = version[1]
-        self.PATCH = version[2] if len(version) > 1 else None
+        self.PATCH = version[2] if len(version) > 2 else None
 
         # Dirty
         if "-" in git_version:
