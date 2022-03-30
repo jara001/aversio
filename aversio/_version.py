@@ -2,6 +2,7 @@
 # _version.py
 """Script for managing versions."""
 
+import os
 
 def get_git_version():
     """Obtain the git version of the current folder.
