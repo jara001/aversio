@@ -31,3 +31,6 @@ uninstall: ##@Install Uninstall the package.
 
 reinstall: ##@Install Reinstall the package
 reinstall: uninstall install
+
+test: ##@Test Run the unit tests.
+	python -m unittest discover -s tests
