@@ -18,16 +18,16 @@ help: ## Show this help message.
 
 
 build: ##@Build Build a Python3 wheel.
-	python3 setup.py build bdist_wheel --universal
+	python setup.py build bdist_wheel --universal
 
 develop: ##@Developer Install the package as link to this repository.
-	python3 setup.py develop --user
+	python setup.py develop --user
 
 install: ##@Install Install the package for current user.
-	python3 setup.py install --user
+	python setup.py install --user
 
 uninstall: ##@Install Uninstall the package.
-	python3 -m pip uninstall '$(notdir $(CURDIR))'
+	python -m pip uninstall '$(notdir $(CURDIR))'
 
 reinstall: ##@Install Reinstall the package
 reinstall: uninstall install
