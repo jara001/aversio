@@ -12,7 +12,6 @@ Requirements:
 The versions are derived from git tags. We expect that their format is:
 ```
 X.Y.Z
-X.Y.Z-D
 X.Y.Z-D-hashhash
 X.Y.Z-D-hashhash-dirty
 ```
