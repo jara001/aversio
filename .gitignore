@@ -1,0 +1,12 @@
+# Compiled stuff
+*.pyc
+__pycache__
+
+# Wheels
+*.egg-info/
+build/
+dist/
+
+# Automated versioning
+VERSION
+*/version.py

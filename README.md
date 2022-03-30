@@ -12,7 +12,6 @@ Requirements:
 The versions are derived from git tags. We expect that their format is:
 ```
 X.Y.Z
-X.Y.Z-D
 X.Y.Z-D-hashhash
 X.Y.Z-D-hashhash-dirty
 ```
@@ -26,6 +25,20 @@ Dirty commits are tracked in `VERSION` file. Therefore you do not have to commit
 ## Usage
 
 For this version, use following concept in your `setup.py`:
+```python
+from aversio import Version, get_git_version, maintain_version
+
+PACKAGE_NAME = ""
+
+VERSION = maintain_version(str(Version(get_git_version()[1:])), "VERSION")
+
+# Store the version into the package
+with open("./%s/version.py" % PACKAGE_NAME, "w") as file:
+    file.write("__version__ = '%s'" % VERSION)
+```
+
+
+Or you can use the older, longer, variant (identical to the one above):
 ```python
 import os
 from aversio import Version
