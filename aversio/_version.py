@@ -64,7 +64,7 @@ def maintain_version(version, filename = "VERSION"):
     version = fix_version(version, stored)
 
     with open(filename, "w") as file:
-        file.write(filename)
+        file.write(version)
 
     return version
 
