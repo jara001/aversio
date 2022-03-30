@@ -9,7 +9,7 @@ def get_git_version():
     Returns:
     git_version -- current git version, str
     """
-    return os.popen("git describe --tags --dirty --always").read()
+    return os.popen("git describe --tags --dirty --always").read()[:-1]
 
 
 def fix_version(version, stored_version = ""):
