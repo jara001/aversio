@@ -1,2 +1,2 @@
 #!/usr/bin/env python
-from ._version import Version
+from ._version import *
