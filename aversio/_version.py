@@ -2,6 +2,16 @@
 # _version.py
 """Script for managing versions."""
 
+
+def get_git_version():
+    """Obtain the git version of the current folder.
+
+    Returns:
+    git_version -- current git version, str
+    """
+    return os.popen("git describe --tags --dirty --always").read()
+
+
 class Version():
     """Simple class for parsing versions and creating a Py-compatible format.
 
