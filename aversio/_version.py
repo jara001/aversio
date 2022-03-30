@@ -37,7 +37,11 @@ class Version():
             self.POSTPATCH = _git_version[:_git_version.index("-")]
             _git_version = _git_version[_git_version.index("-")+1:]
 
-        self.OTHER = _git_version
+        # Save the commit / tag version
+        if _git_version != "":
+            self.OTHER = _git_version
+        else:
+            self.OTHER = git_version[:-6] if self.DEV else git_version
 
 
     def __str__(self):
