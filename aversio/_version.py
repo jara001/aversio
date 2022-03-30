@@ -12,6 +12,36 @@ def get_git_version():
     return os.popen("git describe --tags --dirty --always").read()
 
 
+def fix_version(version, stored_version = ""):
+    """Format and obtain the true version by comparing the latest one with current.
+
+    Arguments:
+    version -- current version, str
+    stored_version -- latest stored version, str
+
+    Returns:
+    fixed_version -- current true version, str
+    """
+
+    if stored_version != "":
+        if ".dev" in version:
+            _len = len(version[:version.index(".dev")+4])
+        else:
+            _len = len(version)
+
+        if stored_version[:_len] == version[:_len] and ".dev" in version:
+            # Obtain dev number
+            version = version + str(int(stored_version[_len:]) + 1)
+        else:
+            if ".dev" in version:
+                version = version + "0"
+    else:
+        if ".dev" in version:
+            version = version + "0"
+
+    return version
+
+
 class Version():
     """Simple class for parsing versions and creating a Py-compatible format.
 
