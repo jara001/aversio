@@ -18,24 +18,26 @@ class Version():
         self.MINOR = version[1]
         self.PATCH = version[2] if len(version) > 2 else None
 
-        # Dirty
-        if "-" in git_version:
-            git_version = git_version[git_version.index("-")+1:]
+        _git_version = git_version
 
-            self.DEV = git_version[-5:] == "dirty"
+        # Dirty
+        if "-" in _git_version:
+            _git_version = _git_version[_git_version.index("-")+1:]
+
+            self.DEV = _git_version[-5:] == "dirty"
 
             if self.DEV:
-                git_version = git_version[:-6]
+                _git_version = _git_version[:-6]
         else:
             self.DEV = False
 
         # Commit
         self.POSTPATCH = None
-        if len(git_version) > 0 and "-" in git_version:
-            self.POSTPATCH = git_version[:git_version.index("-")]
-            git_version = git_version[git_version.index("-")+1:]
+        if len(_git_version) > 0 and "-" in _git_version:
+            self.POSTPATCH = _git_version[:_git_version.index("-")]
+            _git_version = _git_version[_git_version.index("-")+1:]
 
-        self.OTHER = git_version
+        self.OTHER = _git_version
 
 
     def __str__(self):
