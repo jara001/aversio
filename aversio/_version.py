@@ -43,6 +43,32 @@ def fix_version(version, stored_version = ""):
     return version
 
 
+def maintain_version(version, filename = "VERSION"):
+    """Fix version according to the stored one.
+
+    Arguments:
+    version -- current version, str
+    filename -- name of the file with latest version, str
+
+    Returns:
+    version -- current true version, str
+
+    Note: This just reads the file, runs 'fix_version' and
+    saves the result.
+    """
+    stored = ""
+
+    if os.path.exists(filename):
+        stored = open(filename, "r").read()
+
+    version = fix_version(version, stored)
+
+    with open(filename, "w") as file:
+        file.write(filename)
+
+    return version
+
+
 class Version():
     """Simple class for parsing versions and creating a Py-compatible format.
 
